@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./styles.css";
 import { scoreAttempt, buildFeedback } from "./utils/score";
 import { useTTS } from "./hooks/useTTS";
@@ -24,7 +24,8 @@ function getPair(turns, startIndex) {
   return { appIdx, userIdx };
 }
 
-function GameInterface({ library, setLibrary }) {
+function GameInterface({ library, setLibrary, isAdmin, setIsAdmin }) {
+  const navigate = useNavigate();
   // Game Interface State
   const [navPath, setNavPath] = useState({ level: null, category: null, dialog: null, view: 'home' });
 
@@ -228,6 +229,27 @@ function GameInterface({ library, setLibrary }) {
     setNavPath({ ...navPath, view: 'home' });
   };
 
+  const handleAdminLogin = () => {
+    const username = window.prompt("Admin username:");
+    if (username === null) return;
+    const password = window.prompt("Admin password:");
+    if (password === null) return;
+
+    if (username === "admin" && password === "1234admin") {
+      setIsAdmin(true);
+      localStorage.setItem("isAdmin", "true");
+      navigate("/admin");
+      return;
+    }
+
+    window.alert("Invalid admin credentials.");
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdmin(false);
+    localStorage.removeItem("isAdmin");
+  };
+
   // 1. Loading State (Handled by App, but safe here)
   if (!library) return <div className="wrap">Loading library...</div>;
 
@@ -268,7 +290,14 @@ function GameInterface({ library, setLibrary }) {
           <h1 style={{flex:1, textAlign: 'center'}}>English Speaking Practice</h1>
           
           <div style={{display:'flex', gap:'10px'}}>
-             {/* Admin or other header items could go here */}
+             {isAdmin ? (
+               <>
+                 <button onClick={() => navigate("/admin")} style={{fontSize:'12px', padding:'6px 12px'}}>Admin</button>
+                 <button onClick={handleAdminLogout} style={{fontSize:'12px', padding:'6px 12px'}}>Log out</button>
+               </>
+             ) : (
+               <button onClick={handleAdminLogin} style={{fontSize:'12px', padding:'6px 12px'}}>Admin Login</button>
+             )}
           </div>
         </div>
         
@@ -376,6 +405,7 @@ function GameInterface({ library, setLibrary }) {
 
 export default function App() {
   const [library, setLibrary] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem("isAdmin") === "true");
   
   // Load Library
   useEffect(() => {
@@ -413,8 +443,15 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/*" element={<GameInterface library={library} setLibrary={setLibrary} />} />
-      <Route path="/admin" element={<AdminDashboard library={library} setLibrary={setLibrary} />} />
+      <Route path="/*" element={<GameInterface library={library} setLibrary={setLibrary} isAdmin={isAdmin} setIsAdmin={setIsAdmin} />} />
+      <Route
+        path="/admin"
+        element={
+          isAdmin
+            ? <AdminDashboard library={library} setLibrary={setLibrary} />
+            : <div className="wrap">Access denied. Please use Admin Login.</div>
+        }
+      />
     </Routes>
   );
 }
