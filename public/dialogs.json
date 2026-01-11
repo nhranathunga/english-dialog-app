@@ -1,0 +1,137 @@
+{
+  "levels": [
+    {
+      "id": "A1",
+      "name": "Beginner (A1)",
+      "categories": [
+        {
+          "id": "greetings",
+          "name": "Greetings",
+          "isPremium": false,
+          "dialogs": [
+            {
+              "id": "a1-greet-1",
+              "title": "Meeting a New Friend",
+              "turns": [
+                { "speaker": "app", "text": "Hello! My name is Sarah. What is your name?" },
+                { "speaker": "user", "text": "Hi Sarah. My name is Tom.", "keywords": ["name", "Tom"] },
+                { "speaker": "app", "text": "Nice to meet you, Tom. Where are you from?" },
+                { "speaker": "user", "text": "I am from Spain. And you?", "keywords": ["from", "Spain"] },
+                { "speaker": "app", "text": "I am from the UK. Welcome!" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cafe",
+          "name": "At the Cafe",
+          "isPremium": true,
+          "dialogs": [
+            {
+              "id": "a1-cafe-1",
+              "title": "Ordering Coffee",
+              "turns": [
+                { "speaker": "app", "text": "Welcome so Starbucks. What would you like?" },
+                { "speaker": "user", "text": "I would like a coffee, please.", "keywords": ["like", "coffee"] },
+                { "speaker": "app", "text": "Sure. Black or with milk?" },
+                { "speaker": "user", "text": "With milk and sugar, please.", "keywords": ["milk", "sugar"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "name": "Elementary (A2)",
+      "categories": [
+        {
+          "id": "shopping",
+          "name": "Shopping",
+          "isPremium": false,
+          "dialogs": [
+            {
+              "id": "a2-shop-1",
+              "title": "Buying a Shirt",
+              "turns": [
+                { "speaker": "app", "text": "Can I help you find anything?" },
+                { "speaker": "user", "text": "Yes, I am looking for a blue shirt.", "keywords": ["looking", "blue", "shirt"] },
+                { "speaker": "app", "text": "What size do you need?" },
+                { "speaker": "user", "text": "I need a medium, please.", "keywords": ["need", "medium"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1",
+      "name": "Intermediate (B1)",
+      "categories": [
+        {
+          "id": "travel",
+          "name": "Travel & Transport",
+          "isPremium": true,
+          "dialogs": [
+             {
+              "id": "b1-train-1",
+              "title": "Booking a Train Ticket",
+              "turns": [
+                { "speaker": "app", "text": "Good morning. How can I help you?" },
+                { "speaker": "user", "text": "I'd like a return ticket to London, please.", "keywords": ["return", "ticket", "London"] },
+                { "speaker": "app", "text": "Leaving today?" },
+                { "speaker": "user", "text": "Yes, on the next available train.", "keywords": ["next", "available", "train"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "Upper Intermediate (B2)",
+      "categories": [
+        {
+          "id": "business",
+          "name": "Business Meetings",
+          "isPremium": true,
+          "dialogs": [
+            {
+              "id": "b2-meet-1",
+              "title": "Project Update",
+              "turns": [
+                { "speaker": "app", "text": "Could you give us an update on the marketing project?" },
+                { "speaker": "user", "text": "Certainly. We have completed the initial research phase.", "keywords": ["completed", "initial", "research"] },
+                { "speaker": "app", "text": "Excellent. Are we on track for the deadline?" },
+                { "speaker": "user", "text": "Yes, we should finish by next Friday as planned.", "keywords": ["finish", "Friday", "planned"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1",
+      "name": "Advanced (C1)",
+      "categories": [
+        {
+          "id": "debate",
+          "name": "Debate & Opinion",
+          "isPremium": true,
+          "dialogs": [
+            {
+               "id": "c1-tech-1",
+               "title": "Future of AI",
+               "turns": [
+                 { "speaker": "app", "text": "Some argue that AI will replace human creativity. What is your take?" },
+                 { "speaker": "user", "text": "I believe AI will augment creativity rather than replace it completely.", "keywords": ["augment", "creativity", "replace"] },
+                 { "speaker": "app", "text": "That is an optimistic view. But what about redundancy?" },
+                 { "speaker": "user", "text": "New roles will emerge that require managing these advanced tools.", "keywords": ["roles", "emerge", "managing"] }
+               ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

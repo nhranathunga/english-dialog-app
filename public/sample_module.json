@@ -1,0 +1,24 @@
+{
+  "id": "salary_negotiation",
+  "title": "Salary Negotiation",
+  "turns": [
+    {
+      "speaker": "app",
+      "text": "We would like to offer you the position. What are your salary expectations?"
+    },
+    {
+      "speaker": "user",
+      "text": "I am looking for a salary around fifty thousand dollars.",
+      "keywords": ["looking", "salary", "fifty", "thousand"]
+    },
+    {
+      "speaker": "app",
+      "text": "That is within our budget. When can you start?"
+    },
+    {
+      "speaker": "user",
+      "text": "I can start next Monday.",
+      "keywords": ["start", "Monday"]
+    }
+  ]
+}

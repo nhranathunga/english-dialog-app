@@ -1,0 +1,22 @@
+{
+  "id": "job_interview",
+  "name": "Job Interview",
+  "isPremium": true,
+  "dialogs": [
+    {
+      "id": "intro_interview",
+      "title": "Introduction",
+      "turns": [
+        {
+          "speaker": "app",
+          "text": "Good morning. Please take a seat. Tell me a little about yourself."
+        },
+        {
+          "speaker": "user",
+          "text": "Good morning. My name is Alex and I am a software engineer.",
+          "keywords": ["name", "software", "engineer"]
+        }
+      ]
+    }
+  ]
+}
