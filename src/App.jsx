@@ -4,6 +4,7 @@ import "./styles.css";
 import { scoreAttempt, buildFeedback } from "./utils/score";
 import { useTTS } from "./hooks/useTTS";
 import { useSpeechRecognition } from "./hooks/useSpeechRecognition";
+import { API_BASE } from "./config";
 
 import SettingsBar from "./components/SettingsBar";
 import DialogCard from "./components/DialogCard";
@@ -420,7 +421,7 @@ export default function App() {
     }
 
     // Try fetching from backend API first
-    fetch("http://localhost:5000/api/content/library")
+    fetch(`${API_BASE}/api/content/library`)
       .then(res => {
         if (!res.ok) throw new Error("API not available");
         return res.json();

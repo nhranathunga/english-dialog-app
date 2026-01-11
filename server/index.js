@@ -7,7 +7,27 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = (() => {
+  const rawOrigins = process.env.CORS_ORIGINS;
+  if (!rawOrigins) {
+    return { origin: true };
+  }
+  const allowed = rawOrigins
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  return {
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowed.includes(origin)) return callback(null, true);
+      return callback(new Error("Not allowed by CORS"));
+    },
+  };
+})();
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
 
 // Database Connection

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../config";
 
 export default function AdminDashboard({ library, setLibrary }) {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function AdminDashboard({ library, setLibrary }) {
 
   // Fetch Users on Mount
   useEffect(() => {
-    fetch("http://localhost:5000/api/auth/users")
+    fetch(`${API_BASE}/api/auth/users`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -39,7 +40,7 @@ export default function AdminDashboard({ library, setLibrary }) {
   const updateLevelInDb = async (levelId, newCategories) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/content/level/${levelId}`, {
+      const res = await fetch(`${API_BASE}/api/content/level/${levelId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ categories: newCategories })
